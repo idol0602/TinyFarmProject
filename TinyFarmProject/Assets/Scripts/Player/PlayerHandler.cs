@@ -22,10 +22,16 @@ public class PlayerHandler : MonoBehaviour
 
     void Update()
     {
-        // Nhấn phím H để thực hiện hành động "Hoe"
+        // Kiểm tra nút 'h' cho hành động cuốc đất (Hoe)
         if (Keyboard.current != null && Keyboard.current.hKey.wasPressedThisFrame)
         {
             TriggerHoeAction();
+        }
+
+        // Kiểm tra nút 'g' cho hành động tưới nước (Watering)
+        if (Keyboard.current != null && Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            TriggerWateringAction();
         }
     }
 
@@ -70,9 +76,48 @@ public class PlayerHandler : MonoBehaviour
         }
         else
         {
+            // Nếu đi ngang (trái hoặc phải)
             animator.SetTrigger("HoeRight");
         }
 
+        UpdateSpriteDirection(lastDir.x);
+    }
+
+    // Hàm mới cho hành động tưới nước
+    public void TriggerWateringAction()
+    {
+        if (animator == null || moveScript == null) return;
+
+        Vector2 lastDir = moveScript.lastMoveDirection.normalized;
+
+        // Dừng nhân vật khi thực hiện hành động
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+
+        // Đảm bảo dừng animation di chuyển
+        animator.SetFloat("speed", 0f);
+
+        float absX = Mathf.Abs(lastDir.x);
+        float absY = Mathf.Abs(lastDir.y);
+
+        // Quyết định hướng ưu tiên (lên/xuống hay trái/phải)
+        if (absY >= absX)
+        {
+            if (lastDir.y > 0)
+                // Tưới lên
+                animator.SetTrigger("WateringUp");
+            else
+                // Tưới xuống
+                animator.SetTrigger("WateringDown");
+        }
+        else
+        {
+            // Tưới ngang (phải hoặc trái)
+            // Dùng animation wateringRight
+            animator.SetTrigger("WateringRight");
+        }
+
+        // Lật sprite để xử lý hướng trái (wateringLeft = wateringRight + flipX)
         UpdateSpriteDirection(lastDir.x);
     }
 
@@ -80,7 +125,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        // Lật sprite khi đi trái
+        // Lật sprite khi đi hoặc hành động về phía trái
         if (lastMoveX < 0)
             spriteRenderer.flipX = true;
         else if (lastMoveX > 0)
