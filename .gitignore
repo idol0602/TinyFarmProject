@@ -1,0 +1,107 @@
+# ================== UNITY + FIREBASE MINIMAL 2025 ==================
+# (Tối ưu, không ẩn nhầm file cần thiết, không dư folder)
+
+# Unity rác
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uilds?/
+[Ll]ogs/
+[Uu]serSettings/
+MemoryCaptures/
+
+# IDE rác
+.vs/
+.vscode/
+.idea/
+.gradle/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+
+# Build rác
+*.apk
+*.aab
+*.unitypackage
+*.exe
+*.x86_64
+*.zip
+*.rar
+
+# Media nặng (không nên push)
+*.wav
+*.mp3
+*.mp4
+*.psd
+*.blend
+*.fbx
+
+# OS rác
+.DS_Store
+Thumbs.db
+
+# Firebase SDK gốc (bỏ qua toàn bộ, trừ các file được force add bên dưới)
+Assets/Firebase/
+Assets/ExternalDependencyManager/
+Assets/Parse/
+Assets/Editor Default Resources/Firebase/
+Assets/Plugins/x86/
+Assets/Plugins/tvOS/
+
+# File thừa đã untick
+Assets/Plugins/Google.MiniJson.*
+Assets/Plugins/iOS/Firebase.App.*
+Assets/Plugins/x86_64/FirebaseCppApp-13.4.0.*
+
+# CONFIG THẬT → KHÔNG BAO GIỜ COMMIT (để mỗi người tự thêm)
+Assets/google-services.json
+Assets/GoogleService-Info.plist
+Assets/StreamingAssets/google-services-desktop.json
+Assets/StreamingAssets/GoogleService-Info.plist
+
+# ================== FORCE COMMIT đúng 26 file cần cho Auth + Database ==================
+!Assets/Plugins/Firebase.App.dll
+!Assets/Plugins/Firebase.App.pdb
+!Assets/Plugins/Firebase.Auth.dll
+!Assets/Plugins/Firebase.Auth.pdb
+!Assets/Plugins/Firebase.Database.dll
+!Assets/Plugins/Firebase.Database.pdb
+!Assets/Plugins/Firebase.Platform.dll
+!Assets/Plugins/Firebase.Platform.pdb
+!Assets/Plugins/Firebase.TaskExtension.dll
+!Assets/Plugins/Firebase.TaskExtension.pdb
+
+!Assets/Plugins/iOS/Firebase.Auth.dll
+!Assets/Plugins/iOS/Firebase.Auth.pdb
+!Assets/Plugins/iOS/Firebase.Database.dll
+!Assets/Plugins/iOS/Firebase.Database.pdb
+!Assets/Plugins/iOS/FirebaseCppAuth.bundle
+!Assets/Plugins/iOS/FirebaseCppAuth.dll
+!Assets/Plugins/iOS/FirebaseCppAuth.so
+!Assets/Plugins/iOS/FirebaseCppDatabase.bundle
+!Assets/Plugins/iOS/FirebaseCppDatabase.dll
+!Assets/Plugins/iOS/FirebaseCppDatabase.so
+!Assets/Plugins/iOS/libFirebaseCppAuth.a
+!Assets/Plugins/iOS/libFirebaseCppDatabase.a
+
+!Assets/Plugins/x86_64/FirebaseCppAuth.bundle
+!Assets/Plugins/x86_64/FirebaseCppAuth.dll
+!Assets/Plugins/x86_64/FirebaseCppAuth.so
+!Assets/Plugins/x86_64/FirebaseCppDatabase.bundle
+!Assets/Plugins/x86_64/FirebaseCppDatabase.dll
+!Assets/Plugins/x86_64/FirebaseCppDatabase.so
+
+# ================== XONG! KHÔNG CẦN TẠO GÌ THÊM ==================
+TinyFarmProject/Temp/
+
+# XÓA VĨNH VIỄN 2 FILE LỚN NÀY KHỎI GIT
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_4_0.bundle
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_4_0.so
+Assets/Firebase/Plugins/x86_64/*.bundle
+Assets/Firebase/Plugins/x86_64/*.so
+
+# Chỉ giữ file .meta (Unity cần để nhận plugin)
+!Assets/Firebase/Plugins/x86_64/*.meta
